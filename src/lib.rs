@@ -521,8 +521,8 @@ pub fn process_line(line: &str, context: &mut Context) -> Result<String, Error> 
         Command(Command, &'a str),
     }
 
-    let line = if let Some(rest) = line.strip_prefix('#') {
-        if rest.starts_with('#') {
+    let line = if let Some(rest) = line.trim().strip_prefix('#') {
+        if rest.trim().starts_with('#') {
             Line::Text(rest)
         } else {
             let mut parts = rest.trim_start().splitn(2, ' ');
